@@ -4,25 +4,40 @@
 " Description: first official vimrc that mainly consist of 
 " my style
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Wrap too long lines
-set wrap
+" not Wrap too long lines
+set nowrap
+
+" show what I am doing
+set modeline
+
+" open files from mac/dos
+set fileformats=unix,dos,mac	
 
 " spaces instead of tabs
 set expandtab
 
+" open local config files
+set exrc	
+
+" don't add white space when I don't tell you to
+set nojoinspaces
+				
 " guess indentation
 set autoindent
 set smartindent
 
-" Use spaces instead of tabs
-set expandtab
-
 " Smart Tab :)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+" Expand tabs in C files to spaces
+au BufRead,BufNewFile *.{c,h,java} set expandtab
+au BufRead,BufNewFile *.{c,h,java} set shiftwidth=4
+au BufRead,BufNewFile *.{c,h,java} set tabstop=4
+
+" Do not expand tabs in assembly file.  Make them 8 chars wide.
+au BufRead,BufNewFile *.s set noexpandtab
+au BufRead,BufNewFile *.s set shiftwidth=8
+au BufRead,BufNewFile *.s set tabstop=8
 
 " Linebreak at 100 characters
 set lbr
@@ -45,8 +60,8 @@ set nocompatible
 " powerful backspaces
 set backspace=indent,eol,start
 
-" highlight the searchterms
-set hlsearch
+" not highlight the searchterms
+set nohlsearch
 
 " jump to the matches while typing
 set incsearch
